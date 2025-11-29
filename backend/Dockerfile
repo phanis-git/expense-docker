@@ -1,11 +1,12 @@
-FROM nodejs:20
+FROM nodejs:20-alpine 
 EXPOSE 8080
 WORKDIR /opt/server
-COPY schema .
+COPY schema ./schema
 COPY *.js .
 COPY package.json .
-RUN useradd expense
 ENV DB_HOST="mysql"
+RUN addgroup -S expense && adduser -S expense -G expense
+RUN npm install
 USER expense
-CMD ["server.js"]
 ENTRYPOINT ["node"]
+CMD ["server.js"]

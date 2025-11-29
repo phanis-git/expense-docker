@@ -1,0 +1,36 @@
+services:
+  frontend: 
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: sivaphanikumar/expense-frontend:v1 
+    container_name: expense-frontend
+    depends_on:
+    - backend
+    networks:
+      - expense
+
+  backend:
+    build:
+      context: ./backend
+    image: sivaphanikumar/expense-backend:v1
+    container_name: expense-backend
+    depends_on:
+    - database
+    networks:
+      - expense
+
+  database:
+    build:
+      context: ./database
+    image: sivaphanikumar/expense-database:v1
+    container_name: expense-database
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - expense
+
+networks:
+  expense:
+volumes:
+  mysql:

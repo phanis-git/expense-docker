@@ -22,10 +22,10 @@ RUN npm install
 COPY schema ./schema
 COPY *.js .
 
-ENV DB_HOST="mysql"
+ENV DB_HOST="expense-database"
 
 RUN addgroup -S expense && adduser -S expense -G expense
 USER expense
 
 ENTRYPOINT ["node"]
-CMD ["server.js"]
+CMD ["index.js"]

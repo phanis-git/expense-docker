@@ -7,22 +7,26 @@ services:
     container_name: expense-frontend
     depends_on:
     - backend
+    ports:
+      - "80:80"
     networks:
-      - expense
+    - expense
 
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     image: sivaphanikumar/expense-backend:v1
     container_name: expense-backend
     depends_on:
     - database
     networks:
-      - expense
+    - expense
 
   database:
     build:
       context: ./database
+      dockerfile: Dockerfile
     image: sivaphanikumar/expense-database:v1
     container_name: expense-database
     volumes:

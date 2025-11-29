@@ -1,4 +1,4 @@
-FROM nodejs:20-alpine 
+FROM node:20-alpine 
 EXPOSE 8080
 WORKDIR /opt/server
 COPY schema ./schema

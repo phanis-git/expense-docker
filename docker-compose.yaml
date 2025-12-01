@@ -28,7 +28,7 @@ services:
       context: ./database
       dockerfile: Dockerfile
     image: sivaphanikumar/expense-database:v1
-    container_name: expense-database
+    container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
     networks:

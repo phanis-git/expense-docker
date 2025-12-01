@@ -19,7 +19,7 @@ COPY package.json .
 COPY schema ./schema
 COPY *.js .
 RUN npm install
-ENV DB_HOST="expense-database"
+ENV DB_HOST="mysql"
 RUN addgroup -S expense && adduser -S expense -G expense && \
     chown -R expense:expense /opt/server
 USER expense

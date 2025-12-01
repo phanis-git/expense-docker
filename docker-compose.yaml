@@ -17,6 +17,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: sivaphanikumar/expense-backend:v1
+    command: sh -c "sleep 5 && node /opt/backend/index.js"
     container_name: expense-backend
     depends_on:
     - database

@@ -15,17 +15,14 @@
 FROM node:20-alpine 
 WORKDIR /opt/server
 EXPOSE 8080
-
 COPY package.json .
-RUN npm install
-
 COPY schema ./schema
 COPY *.js .
-
+RUN npm install
 ENV DB_HOST="expense-database"
-
-RUN addgroup -S expense && adduser -S expense -G expense
+RUN addgroup -S expense && adduser -S expense -G expense && \
+    chown -R expense:expense /opt/server
 USER expense
 
-ENTRYPOINT ["node"]
 CMD ["index.js"]
+ENTRYPOINT ["node"]

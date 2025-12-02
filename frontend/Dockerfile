@@ -37,6 +37,6 @@ RUN touch /var/run/nginx.pid && \
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY static/ /usr/share/nginx/html
 COPY index.html /usr/share/nginx/html/index.html
-# USER nginx
+USER nginx
 
 CMD ["nginx", "-g", "daemon off;"]
